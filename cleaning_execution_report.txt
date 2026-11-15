@@ -1,0 +1,60 @@
+TITANIC DATA CLEANSING - EXECUTION REPORT
+=======================================================
+Original shape: 891 rows x 12 columns
+Exact duplicate rows before cleaning: 0
+
+Missing values before cleaning:
+PassengerId      0
+Survived         0
+Pclass           0
+Name             0
+Sex              0
+Age            177
+SibSp            0
+Parch            0
+Ticket           0
+Fare             0
+Cabin          687
+Embarked         2
+
+Step 1 - Text whitespace cleaned.
+Step 2 - Duplicate rows removed: 0
+Step 3 - Numeric columns converted to appropriate numeric types.
+Step 4 - Invalid negative Age values corrected: 0; negative Fare values corrected: 0.
+Step 5 - Missing cells before: 866; after: 0.
+Age: group median (Passenger Class and Sex), then overall median if needed.
+Embarked: mode. Cabin: converted to CabinKnown indicator because of extensive missingness.
+Step 6 - Categorical text values standardized (Sex lowercase; Embarked uppercase).
+Step 7 - Outliers detected with the IQR rule and flagged, not deleted.
+  Age: 33 potential outlier(s)
+  Fare: 116 potential outlier(s)
+  SibSp: 46 potential outlier(s)
+  Parch: 213 potential outlier(s)
+
+Step 8 - Data validation:
+  No duplicate rows: PASS
+  No missing cells: PASS
+  Age non-negative: PASS
+  Fare non-negative: PASS
+  Survived values are 0/1: PASS
+
+Cleaned dataset saved to: C:\Users\5490\Downloads\Data Cleansing\Output\cleaned_titanic.csv
+Final shape: 891 rows x 16 columns
+
+Missing values after cleaning:
+PassengerId          0
+Survived             0
+Pclass               0
+Name                 0
+Sex                  0
+Age                  0
+SibSp                0
+Parch                0
+Ticket               0
+Fare                 0
+Embarked             0
+CabinKnown           0
+Age_OutlierFlag      0
+Fare_OutlierFlag     0
+SibSp_OutlierFlag    0
+Parch_OutlierFlag    0
